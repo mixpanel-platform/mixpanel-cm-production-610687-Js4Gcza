@@ -354,9 +354,9 @@
           }
 
           for (variant in tableObject) {
-            if ( tableObject['Original'] ) {
-              var origTotal = tableObject['Original']['*Experiment Viewed'],
-                  origSuccess = tableObject['Original'][conversionEvent];
+            if ( tableObject['Original version'] ) {
+              var origTotal = tableObject['Original version']['*Experiment Viewed'],
+                  origSuccess = tableObject['Original version'][conversionEvent];
             }
             else {
               var origTotal = 0,
