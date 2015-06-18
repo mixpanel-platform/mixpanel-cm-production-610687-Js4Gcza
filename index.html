@@ -258,7 +258,7 @@
           
           peopleObject = json0;
           
-          while (has_results) {
+          // while (has_results) {
             profiles = peopleObject.values().results;
             for (var profile in profiles) {
               if (profiles.hasOwnProperty(profile)) {
@@ -289,15 +289,15 @@
 
                 }
               }
-            }
-            has_results = Object.keys(profiles).length == 1000;
-            parameters['page'] ++;
+            // }
+            // has_results = Object.keys(profiles).length == 1000;
+            // parameters['page'] ++;
             
-            if (has_results) {
-              MP.api.people(parameters).done(function(json) {
-                peopleObject = json;
-              });
-            }
+            // if (has_results) {
+            //   MP.api.people(parameters).done(function(json) {
+            //     peopleObject = json;
+            //   });
+            // }
           }
           
         });
