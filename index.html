@@ -336,15 +336,15 @@
 
           for (variant in results) {
             funnelObject[variant] = {};
-            tableObject[variant] = {'Experiment Viewed':0};
+            tableObject[variant] = {'*Experiment Viewed':0};
             tableObject[variant][conversionEvent] = 0;
             
             for (date in results[variant]) {
               funnelObject[variant][date] = results[variant][date][1].overall_conv_ratio;
-              tableObject[variant]['Experiment Viewed'] += results[variant][date][0].count;
+              tableObject[variant]['*Experiment Viewed'] += results[variant][date][0].count;
               tableObject[variant][conversionEvent] += results[variant][date][1].count;
             }
-            var conversion = tableObject[variant][conversionEvent] / tableObject[variant]['Experiment Viewed'];
+            var conversion = tableObject[variant][conversionEvent] / tableObject[variant]['*Experiment Viewed'];
             if (!isNaN(conversion)) {
               tableObject[variant]['~Conversion'] = (conversion * 100).toFixed(2) + '%';
             }
@@ -355,14 +355,14 @@
 
           for (variant in tableObject) {
             if ( tableObject['Original'] ) {
-              var origTotal = tableObject['Original']['Experiment Viewed'],
+              var origTotal = tableObject['Original']['*Experiment Viewed'],
                   origSuccess = tableObject['Original'][conversionEvent];
             }
             else {
               var origTotal = 0,
                   origSuccess = 0;
             }
-            var varTotal = tableObject[variant]['Experiment Viewed'],
+            var varTotal = tableObject[variant]['*Experiment Viewed'],
                 varSuccess = tableObject[variant][conversionEvent];
             
             stats = calcStats(origTotal, origSuccess, varTotal, varSuccess);
