@@ -367,10 +367,10 @@
             
             stats = calcStats(origTotal, origSuccess, varTotal, varSuccess);
             tableObject[variant]['~~Improvement'] = stats[0];
-            tableObject[variant]['~Conversion'] += " " + stats[1];
+            tableObject[variant]['~Conversion'] += ' ' + stats[1];
             tableObject[variant]['~~~Chance to Beat Original'] = stats[2];
             if (stats[3] != '--') {
-              tableObject[variant]['~~~Chance to Beat Original'] += ' ' + stats[3];
+              tableObject[variant]['~~~Chance to Beat Original'] += ' (' + stats[3] + ')';
             }
             
             if (people.hasOwnProperty(variant)) {
@@ -401,9 +401,12 @@
 
           tableObject['$overall']['~~Improvement'] = 'N/A'
           tableObject['$overall']['~~~Chance to Beat Original'] = 'N/A'
-          // tableObject['Original']['~~Improvement'] = 'N/A'
-          // tableObject['Original']['~~~Chance to Beat Original'] = 'N/A'
-
+          if (tableObject['Original version']) {
+            tableObject['Original version']['~~Improvement'] = 'N/A'
+            tableObject['Original version']['~~~Chance to Beat Original'] = 'N/A'
+          
+          }
+  
           funnelSelects[event].MPChart('setData', funnelObject);
           tableSelects[event].MPTable('setData', tableObject);
           
