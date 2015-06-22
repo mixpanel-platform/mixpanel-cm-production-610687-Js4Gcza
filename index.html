@@ -21,7 +21,8 @@
         <p>Baseline</p>
         <div id="baseline-select"></div>
       </div>
-      <br><br><br><hr><br>
+      <div class="start"></div>
+      <br><hr><br>
       <div class="conversion">
         <p>Conversion Event 1</p>
         <div id="conversion-event-a"></div>
@@ -29,7 +30,6 @@
         <div class="select prop" id="conversion-prop-a"></div>
         <div class="select contains a"></div>
         <div class="select prop" id="conversion-prop-value-a"></div>
-        <div class="start a"></div>
         <div class="report" id="table-a"></div>
         <h2 class="improvement a">Improvement over time</h2>
         <div class="report" id="funnel-a"></div>
@@ -42,7 +42,6 @@
         <div class="select prop" id="conversion-prop-b"></div>
         <div class="select contains b"></div>
         <div class="select prop" id="conversion-prop-value-b"></div>
-        <div class="start a"></div>
         <div class="report" id="table-b"></div>
         <h2 class="improvement b">Improvement over time</h2>
         <div class="report" id="funnel-b"></div>
@@ -91,8 +90,6 @@
       
       // monetization is currently tracking average first payment and lifetime revenue *of everyone in the experiment* not just people who paid. do we want only those who have paid?
 
-      MP.api.setCredentials('68b81fb0afb02354b0a977997f849628', '549b821284a202ce211c0c1befb60c31');
-    
       var numExperiments = 0,
           peopleProps = {
             items: [
@@ -445,7 +442,7 @@
           }
           var duration = daydiff(parseDate(startDate), parseDate(today));
 
-          $('.start.' + event).append('<p>Start Date: ' + startDate + '</p><p>Experiment Duration: ' + duration.toFixed(0) + ' days</p>');
+          $('.start').append('<p>Start Date: ' + startDate + '</p><p>Experiment Duration: ' + duration.toFixed(0) + ' days</p>');
 
           for (variant in tableObject) {
             if ( tableObject['Original version'] ) {
@@ -504,7 +501,7 @@
           funnelSelects[event].MPChart('setData', abObject);
           tableSelects[event].MPTable('setData', tableObject);
           $('.improvement.' + event).show();
-          $('.start.' + event).show();
+          $('.start').show();
           
         });
       }
